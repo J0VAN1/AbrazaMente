@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+
+<svg
+   width="24"
+   height="24"
+   viewBox="0 0 48 48"
+   data-name="Layer 1"
+   id="Layer_1"
+   fill="#000000"
+   version="1.1"
+   sodipodi:docname="patients1.svg"
+   inkscape:export-filename="patients.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs52" />
+  <sodipodi:namedview
+     id="namedview50"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false" />
+  <g
+     id="SVGRepo_iconCarrier"
+     transform="matrix(0.40400684,0,0,0.40062814,-1.1598819,-1.3968101)">
+    <defs
+       id="defs6">
+      <style
+         id="style4">.cls-1{fill:#a7aece;}.cls-2{fill:#36454F;opacity:0.2;}.cls-3{fill:#393c54;}.cls-4{fill:#8f5653;}.cls-5{fill:#36454F;}.cls-6{fill:#ffffff;}.cls-11,.cls-7,.cls-9{fill:none;stroke-linecap:round;}.cls-7{stroke:#8f5653;stroke-width:16px;}.cls-11,.cls-7{stroke-miterlimit:10;}.cls-8{fill:#b56b63;}.cls-11,.cls-9{stroke:#36454F;}.cls-9{stroke-linejoin:round;stroke-width:1.89px;opacity:0.4;}.cls-10{fill:#f85565;}.cls-11{stroke-width:2px;}</style>
+    </defs>
+    <title
+       id="title8" />
+    <circle
+       class="cls-1"
+       cx="64"
+       cy="64"
+       r="60"
+       id="circle10" />
+    <circle
+       class="cls-2"
+       cx="64"
+       cy="64"
+       r="48"
+       id="circle12" />
+    <path
+       class="cls-3"
+       d="m 99.72,51.16 a 4.33,4.33 0 0 0 -1.15,-8.5 4.33,4.33 0 0 0 -3.14,-8 4.33,4.33 0 0 0 -5,-7 4.33,4.33 0 0 0 -6.43,-5.6 4.33,4.33 0 0 0 -7.64,-3.91 4.33,4.33 0 0 0 -8.35,-2 4.33,4.33 0 0 0 -8.58,0.13 l -0.72,0.09 a 4.34,4.34 0 0 0 -8.29,2.25 4.34,4.34 0 0 0 -7.48,4.21 4.33,4.33 0 0 0 -6.26,5.86 4.33,4.33 0 0 0 -4.68,7.22 4.33,4.33 0 0 0 -2.86,8.09 4.33,4.33 0 0 0 -0.82,8.54 4.33,4.33 0 0 0 1.24,8.46 4.33,4.33 0 0 0 3.23,8 4.33,4.33 0 0 0 5,7 4.33,4.33 0 0 0 6.55,5.54 4.33,4.33 0 0 0 7.68,3.83 4.33,4.33 0 0 0 8.37,1.88 A 4.33,4.33 0 0 0 69,87 a 4.33,4.33 0 0 0 8.29,-2.21 4.33,4.33 0 0 0 7.52,-4.12 4.34,4.34 0 0 0 6.33,-5.8 4.33,4.33 0 0 0 4.76,-7.14 4.33,4.33 0 0 0 2.91,-8.07 4.33,4.33 0 0 0 0.91,-8.53 z"
+       id="path14" />
+    <circle
+       class="cls-4"
+       cx="89.839996"
+       cy="70.870003"
+       r="7.5"
+       id="circle16" />
+    <path
+       class="cls-5"
+       d="m 64,124 a 59.75,59.75 0 0 0 37.53,-13.2 l -2,-5.53 C 98,101.5 93.68,99 88.89,99 H 39.11 c -4.79,0 -9.07,2.51 -10.68,6.28 l -2,5.53 A 59.75,59.75 0 0 0 64,124 Z"
+       id="path18" />
+    <path
+       class="cls-6"
+       d="m 74.26,100.86 c 0,5.66 -4.6,9.25 -10.26,9.25 -5.66,0 -10.26,-3.59 -10.26,-9.25 0,-5.66 4.6,-3.42 10.26,-3.42 5.66,0 10.26,-2.25 10.26,3.42 z"
+       id="path20" />
+    <line
+       class="cls-7"
+       x1="64"
+       x2="64"
+       y1="88.879997"
+       y2="98.879997"
+       id="line22" />
+    <circle
+       class="cls-4"
+       cx="38.16"
+       cy="70.870003"
+       r="7.5"
+       id="circle24" />
+    <path
+       class="cls-8"
+       d="M 64,98 A 26.78,26.78 0 0 1 37.21,71.19 v -9.62 a 26.79,26.79 0 0 1 53.58,0 v 9.62 A 26.78,26.78 0 0 1 64,98 Z"
+       id="path26" />
+    <path
+       class="cls-3"
+       d="M 63.15,30.12 C 47.92,30.57 36,43.47 36,58.7 a 2,2 0 0 0 2,2 v 0 a 2.72,2.72 0 0 0 2.6,-2.1 v 0 A 9.28,9.28 0 0 1 49.73,51 h 28.54 a 9.28,9.28 0 0 1 9.13,7.6 v 0 a 2.72,2.72 0 0 0 2.6,2.06 v 0 a 2,2 0 0 0 2,-2 v -0.6 A 28,28 0 0 0 63.15,30.12 Z"
+       id="path28" />
+    <line
+       class="cls-9"
+       x1="74.120003"
+       x2="83.209999"
+       y1="63.84"
+       y2="63.599998"
+       id="line30" />
+    <line
+       class="cls-9"
+       x1="53.880001"
+       x2="44.790001"
+       y1="63.84"
+       y2="63.599998"
+       id="line32" />
+    <path
+       class="cls-3"
+       d="m 71.55,84 a 1,1 0 0 1 0.94,1.07 8.56,8.56 0 0 1 -17,0 1,1 0 0 1 0.96,-1.07 z"
+       id="path34" />
+    <path
+       class="cls-10"
+       d="m 59,90.91 a 8.52,8.52 0 0 0 10.08,0 C 68,89.16 66.17,89 64,89 c -2.17,0 -4,0.16 -5,1.91 z"
+       id="path36" />
+    <path
+       class="cls-6"
+       d="M 69,86 H 59 a 1.84,1.84 0 0 1 -1.73,-2 h 13.5 A 1.84,1.84 0 0 1 69,86 Z"
+       id="path38" />
+    <rect
+       class="cls-3"
+       height="3"
+       width="2"
+       x="60"
+       y="84"
+       id="rect40" />
+    <path
+       class="cls-4"
+       d="m 63.39,72.24 -3.25,7.44 a 0.69,0.69 0 0 0 0.64,1 h 6.49 a 0.69,0.69 0 0 0 0.64,-1 l -3.25,-7.44 a 0.7,0.7 0 0 0 -1.27,0 z"
+       id="path42" />
+    <path
+       class="cls-11"
+       d="m 54,72 a 3,3 0 0 0 -6,0"
+       id="path44" />
+    <path
+       class="cls-11"
+       d="m 80,72 a 3,3 0 0 0 -6,0"
+       id="path46" />
+  </g>
+</svg>

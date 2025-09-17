@@ -1,0 +1,55 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: edoc-web
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+    environment:
+      - APACHE_RUN_USER=www-data
+      - APACHE_RUN_GROUP=www-data
+    depends_on:
+      - db
+    networks:
+      - edoc-network
+
+  db:
+    image: mariadb:10.5  # Usamos 10.5 que es más compatible
+    container_name: edoc-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: edoc
+      MYSQL_USER: edocuser
+      MYSQL_PASSWORD: userpassword
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./SQL_Database_edoc.sql:/docker-entrypoint-initdb.d/edoc.sql
+    networks:
+      - edoc-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: edoc-phpmyadmin
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: rootpassword
+    ports:
+      - "8081:80"
+    networks:
+      - edoc-network
+
+volumes:
+  db_data:
+
+networks:
+  edoc-network:
+    driver: bridge
+
