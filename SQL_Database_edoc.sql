@@ -91,8 +91,8 @@ CREATE TABLE IF NOT EXISTS `doctor` (
 --
 
 INSERT INTO `doctor` (`docid`, `docemail`, `docname`, `docpassword`, `docnic`, `doctel`, `specialties`) VALUES
-(1, 'doctor@edoc.com', 'Test Doctor', '123', '000000000', '0110000000', 1);
-
+(1, 'doctor@edoc.com', 'Test Doctor', '123', '000000000', '0110000000', 1),
+(2, 'jovani@gmail.com', 'Sarabia Jovani', '123', '2022350996', '0700000000', 20);
 -- --------------------------------------------------------
 
 --
@@ -117,8 +117,9 @@ CREATE TABLE IF NOT EXISTS `patient` (
 --
 
 INSERT INTO `patient` (`pid`, `pemail`, `pname`, `ppassword`, `paddress`, `pnic`, `pdob`, `ptel`) VALUES
-(1, 'patient@edoc.com', 'Test Patient', '123', 'Sri Lanka', '0000000000', '2000-01-01', '0120000000'),
-(2, 'emhashenudara@gmail.com', 'Hashen Udara', '123', 'Sri Lanka', '0110000000', '2022-06-03', '0700000000');
+(1, 'patient@edoc.com', 'Test Patient', '123', 'Sri Lanka', '0000000000', '2026-01-01', '0120000000'),
+(2, 'emhashenudara@gmail.com', 'Hashen Udara', '123', 'Sri Lanka', '0110000000', '2025-06-03', '0700000000'),
+(3, 'sarabiajovani@gmail.com', 'Sarabia Jovani', '123', 'Sri Lanka', '0110000000', '2025-06-03', '0800000000');
 
 -- --------------------------------------------------------
 
@@ -143,14 +144,14 @@ CREATE TABLE IF NOT EXISTS `schedule` (
 --
 
 INSERT INTO `schedule` (`scheduleid`, `docid`, `title`, `scheduledate`, `scheduletime`, `nop`) VALUES
-(1, '1', 'Test Session', '2050-01-01', '18:00:00', 50),
-(2, '1', '1', '2022-06-10', '20:36:00', 1),
-(3, '1', '12', '2022-06-10', '20:33:00', 1),
-(4, '1', '1', '2022-06-10', '12:32:00', 1),
-(5, '1', '1', '2022-06-10', '20:35:00', 1),
-(6, '1', '12', '2022-06-10', '20:35:00', 1),
-(7, '1', '1', '2022-06-24', '20:36:00', 1),
-(8, '1', '12', '2022-06-10', '13:33:00', 1);
+(1, '1', 'Test Session', '2025-09-01', '18:00:00', 50),
+(2, '1', '1', '2025-06-10', '20:36:00', 1),
+(3, '1', '12', '2025-06-10', '20:33:00', 1),
+(4, '1', '1', '2025-06-10', '12:32:00', 1),
+(5, '1', '1', '2025-06-10', '20:35:00', 1),
+(6, '1', '12', '2025-06-10', '20:35:00', 1),
+(7, '1', '1', '2025-06-24', '20:36:00', 1),
+(8, '1', '12', '2025-06-10', '13:33:00', 1);
 
 -- --------------------------------------------------------
 
@@ -170,62 +171,52 @@ CREATE TABLE IF NOT EXISTS `specialties` (
 --
 
 INSERT INTO `specialties` (`id`, `sname`) VALUES
-(1, 'Accident and emergency medicine'),
-(2, 'Allergology'),
-(3, 'Anaesthetics'),
-(4, 'Biological hematology'),
-(5, 'Cardiology'),
-(6, 'Child psychiatry'),
-(7, 'Clinical biology'),
-(8, 'Clinical chemistry'),
-(9, 'Clinical neurophysiology'),
-(10, 'Clinical radiology'),
-(11, 'Dental, oral and maxillo-facial surgery'),
-(12, 'Dermato-venerology'),
-(13, 'Dermatology'),
-(14, 'Endocrinology'),
-(15, 'Gastro-enterologic surgery'),
-(16, 'Gastroenterology'),
-(17, 'General hematology'),
-(18, 'General Practice'),
-(19, 'General surgery'),
-(20, 'Geriatrics'),
-(21, 'Immunology'),
-(22, 'Infectious diseases'),
-(23, 'Internal medicine'),
-(24, 'Laboratory medicine'),
-(25, 'Maxillo-facial surgery'),
-(26, 'Microbiology'),
-(27, 'Nephrology'),
-(28, 'Neuro-psychiatry'),
-(29, 'Neurology'),
-(30, 'Neurosurgery'),
-(31, 'Nuclear medicine'),
-(32, 'Obstetrics and gynecology'),
-(33, 'Occupational medicine'),
-(34, 'Ophthalmology'),
-(35, 'Orthopaedics'),
-(36, 'Otorhinolaryngology'),
-(37, 'Paediatric surgery'),
-(38, 'Paediatrics'),
-(39, 'Pathology'),
-(40, 'Pharmacology'),
-(41, 'Physical medicine and rehabilitation'),
-(42, 'Plastic surgery'),
-(43, 'Podiatric Medicine'),
-(44, 'Podiatric Surgery'),
-(45, 'Psychiatry'),
-(46, 'Public health and Preventive Medicine'),
-(47, 'Radiology'),
-(48, 'Radiotherapy'),
-(49, 'Respiratory medicine'),
-(50, 'Rheumatology'),
-(51, 'Stomatology'),
-(52, 'Thoracic surgery'),
-(53, 'Tropical medicine'),
-(54, 'Urology'),
-(55, 'Vascular surgery'),
-(56, 'Venereology');
+(1, 'Terapia Cognitivo Conductual infantil (TCC)'),
+(2, 'Manejo de alergias relacionadas con salud mental'),
+(3, 'Soporte en cuidados perioperatorios y manejo del dolor'),
+(4, 'Hematología psicológica'),
+(5, 'Intervenciones en salud cardiaca y soporte psicoemocional para niños con cardiopatías'),
+(6, 'Psicología clínica y test neuropsicológico'),
+(7, 'Psiquiatría infantil'),
+(8, 'Psicodiagnóstico y análisis bioquímico asociado a tratamientos'),
+(9, 'Evaluación neurofisiológica y terapias basadas en EEG/estudios del sueño'),
+(10, 'Dermatología y apoyo psicológico por condición cutánea crónica'),
+(11, 'Cuidado dermatológico y estrategias psicosociales para niños con enfermedades visibles'),
+(12, 'Soporte endocrinológico y terapia psicosocial en trastornos del desarrollo puberal'),
+(13, 'Apoyo psicológico perioperatorio en cirugías gastroenterológicas pediátricas'),
+(14, 'Intervención en problemas digestivos con componente emocional'),
+(15, 'Apoyo psicológico en enfermedades hematológicas generales'),
+(16, 'Atención primaria con enfoque en salud mental infantil'),
+(17, 'Geriatría pediátrica'),
+(18, 'Inmunología y salud mental'),
+(19, 'Manejo psicosocial de enfermedades infecciosas crónicas en niños'),
+(20, 'Medicina interna pediátrica con enfoque biopsicosocial'),
+(21, 'Laboratorio y evaluación para apoyar diagnósticos psiquiátricos'),
+(22, 'Apoyo psicológico en cirugía maxilofacial'),
+(23, 'Microbiología y salud mental'),
+(24, 'Soporte para enfermedades renales crónicas en infancia'),
+(25, 'Neuropsiquiatría infantil'),
+(26, 'Neurología pediátrica y apoyo en epilepsias'),
+(27, 'Soporte psicológico pre/post neurocirugía pediátrica'),
+(28, 'Obstetricia y ginecología juvenil'),
+(29, 'Medicina ocupacional pediátrica'),
+(30, 'Atención oftalmológica y soporte para problemas visuales que afectan aprendizaje y autoestima'),
+(31, 'Rehabilitación ortopédica con enfoque en salud mental'),
+(32, 'Trastornos de la comunicación y audición'),
+(33, 'Pediatría con enfoque en salud mental'),
+(34, 'Apoyo en procesos patológicos crónicos y duelo en infancia'),
+(35, 'Farmacología clínica pediatricada y monitoreo psicofarmacológico'),
+(36, 'Medicina física y rehabilitación con terapia ocupacional'),
+(37, 'Cirugía plástica y apoyo psicológico en reconstrucción y aceptación corporal'),
+(38, 'Medicina podiátrica y asesoría en problemas de marcha que afectan actividad y estado anímico'),
+(39, 'Cirugía podiátrica y rehabilitación funcional con soporte psicosocial'),
+(40, 'Salud pública y prevención'),
+(41, 'Radioterapia pediátrica'),
+(42, 'Reumatología pediátrica y apoyo psicológico'),
+(43, 'Salud bucodental y su relación con autoestima'),
+(44, 'Urología pediátrica y acompañamiento psicológico'),
+(45, 'Salud sexual y venereología juvenil'),
+(46, 'Cirugía vascular pediátrica con rehabilitación y apoyo psicosocial');
 
 -- --------------------------------------------------------
 
@@ -249,7 +240,8 @@ INSERT INTO `webuser` (`email`, `usertype`) VALUES
 ('admin@edoc.com', 'a'),
 ('doctor@edoc.com', 'd'),
 ('patient@edoc.com', 'p'),
-('emhashenudara@gmail.com', 'p');
+('emhashenudara@gmail.com', 'p'),
+('jovani@gmail.com', 'd');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

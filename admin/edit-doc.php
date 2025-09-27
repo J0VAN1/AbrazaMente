@@ -1,11 +1,6 @@
-
-    <?php
-    
-    
-
+<?php    
     //import database
     include("../connection.php");
-
 
 
     if($_POST){
@@ -65,8 +60,8 @@
     }
     
 
-    header("location: doctors.php?action=edit&error=".$error."&id=".$id);
-    ?>
+    header("location: doctors.php?action=edit&error=".$error."&id=".$id);    
+?>
     
    
 

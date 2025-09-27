@@ -1,3 +1,22 @@
+<?php
+
+    session_start();
+
+    if(isset($_SESSION["user"])){
+        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){
+            header("location: ../login.php");
+        }
+
+    }else{
+        header("location: ../login.php");
+    }
+    
+    
+
+    //import database
+    include("../connection.php");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,28 +38,7 @@
 </style>
 </head>
 <body>
-    <?php
 
-    //learn from w3schools.com
-
-    session_start();
-
-    if(isset($_SESSION["user"])){
-        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){
-            header("location: ../login.php");
-        }
-
-    }else{
-        header("location: ../login.php");
-    }
-    
-    
-
-    //import database
-    include("../connection.php");
-
-    
-    ?>
     <div class="container">
         <div class="menu">
             <table class="menu-container" border="0">
@@ -52,7 +50,7 @@
                                     <img src="../img/user.png" alt="" width="100%" style="border-radius:50%">
                                 </td>
                                 <td style="padding:0px;margin:0px;">
-                                    <p class="profile-title">Administrator</p>
+                                    <p class="profile-title">Administrador</p>
                                     <p class="profile-subtitle">admin@edoc.com</p>
                                 </td>
                             </tr>
@@ -67,27 +65,27 @@
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-dashbord" >
-                        <a href="index.php" class="non-style-link-menu"><div><p class="menu-text">Dashboard</p></a></div></a>
+                        <a href="index.php" class="non-style-link-menu"><div><p class="menu-text">Inicio</p></a></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row">
                     <td class="menu-btn menu-icon-doctor ">
-                        <a href="doctors.php" class="non-style-link-menu "><div><p class="menu-text">Doctors</p></a></div>
+                        <a href="doctors.php" class="non-style-link-menu "><div><p class="menu-text">Especialistas</p></a></div>
                     </td>
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-schedule ">
-                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Schedule</p></div></a>
+                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Cronograma</p></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row">
                     <td class="menu-btn menu-icon-appoinment menu-active menu-icon-appoinment-active">
-                        <a href="appointment.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">Appointment</p></a></div>
+                        <a href="appointment.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">Cita</p></a></div>
                     </td>
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-patient">
-                        <a href="patient.php" class="non-style-link-menu"><div><p class="menu-text">Patients</p></a></div>
+                        <a href="patient.php" class="non-style-link-menu"><div><p class="menu-text">Pacientes</p></a></div>
                     </td>
                 </tr>
 
@@ -97,15 +95,15 @@
             <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
                 <tr >
                     <td width="13%" >
-                    <a href="appointment.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Back</font></button></a>
+                    <a href="appointment.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Vuelve</font></button></a>
                     </td>
                     <td>
-                        <p style="font-size: 23px;padding-left:12px;font-weight: 600;">Appointment Manager</p>
+                        <p style="font-size: 23px;padding-left:12px;font-weight: 600;">Gerente de citas</p>
                                            
                     </td>
                     <td width="15%">
                         <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
-                            Today's Date
+                            Fecha: 
                         </p>
                         <p class="heading-sub12" style="padding: 0;margin: 0;">
                             <?php 
@@ -139,7 +137,7 @@
                 <tr>
                     <td colspan="4" style="padding-top:10px;width: 100%;" >
                     
-                        <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">All Appointments (<?php echo $list110->num_rows; ?>)</p>
+                        <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">Todas las citas (<?php echo $list110->num_rows; ?>)</p>
                     </td>
                     
                 </tr>
@@ -152,7 +150,7 @@
 
                            </td> 
                         <td width="5%" style="text-align: center;">
-                        Date:
+                        Fecha:
                         </td>
                         <td width="30%">
                         <form action="" method="post">
@@ -161,11 +159,11 @@
 
                         </td>
                         <td width="5%" style="text-align: center;">
-                        Doctor:
+                        Especialista:
                         </td>
                         <td width="30%">
                         <select name="docid" id="" class="box filter-container-items" style="width:90% ;height: 37px;margin: 0;" >
-                            <option value="" disabled selected hidden>Choose Doctor Name from the list</option><br/>
+                            <option value="" disabled selected hidden>Elija el nombre del especialista de la lista</option><br/>
                                 
                             <?php 
                              
@@ -246,40 +244,40 @@
                         <thead>
                         <tr>
                                 <th class="table-headin">
-                                    Patient name
+                                    Nombre del Paciente
                                 </th>
                                 <th class="table-headin">
                                     
-                                    Appointment number
+                                    Numero de cita
                                     
                                 </th>
                                
                                 
                                 <th class="table-headin">
-                                    Doctor
+                                    Especialista
                                 </th>
                                 <th class="table-headin">
                                     
                                 
-                                    Session Title
+                                    Título de la sesión
                                     
                                     </th>
                                 
                                 <th class="table-headin" style="font-size:10px">
                                     
-                                    Session Date & Time
+                                    Fecha y hora de la sesión
                                     
                                 </th>
                                 
                                 <th class="table-headin">
                                     
-                                    Appointment Date
+                                    Fecha de cita
                                     
                                 </th>
                                 
                                 <th class="table-headin">
                                     
-                                    Events
+                                    Optar
                                     
                                 </tr>
                         </thead>
@@ -298,8 +296,8 @@
                                     <img src="../img/notfound.svg" width="25%">
                                     
                                     <br>
-                                    <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">We  couldnt find anything related to your keywords !</p>
-                                    <a class="non-style-link" href="appointment.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Show all Appointments &nbsp;</font></button>
+                                    <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">¡No pudimos encontrar nada relacionado con tus palabras clave!</p>
+                                    <a class="non-style-link" href="appointment.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Mostrar todas las citas &nbsp;</font></button>
                                     </a>
                                     </center>
                                     <br><br><br><br>
