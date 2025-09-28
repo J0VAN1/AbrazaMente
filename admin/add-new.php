@@ -73,7 +73,7 @@
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
         
-    <title>Doctor</title>
+    <title>Psicologo</title>
     <style>
         .popup{
             animation: transitionIn-Y-bottom 0.5s;
