@@ -1,45 +1,55 @@
-/*These transition are from youtube*/
-
 @keyframes transitionIn-X{
     from {
-            opacity: 0;
-            transform: translateX(-10px);
-
+        opacity: 0;
+        transform: translateX(-20px);
     }
-
     to {
-            opacity: 1;
-            transform: translateX(0);
+        opacity: 1;
+        transform: translateX(0);
     }
 }
-    
-
 
 @keyframes transitionIn-Y-over{
     from {
-            opacity: 0;
-            transform: translateY(-10px);
-
+        opacity: 0;
+        transform: translateY(-15px);
     }
-
     to {
-            opacity: 1;
-            transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
 }
-    
+
 @keyframes transitionIn-Y-bottom{
     from {
-            opacity: 0;
-            transform: translateY(30px);
-
+        opacity: 0;
+        transform: translateY(25px);
     }
-
     to {
-            opacity: 1;
-            transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
 }
-    
 
-/* Transition end */
+/* Nueva animación para efectos hover */
+@keyframes gentlePulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Transición global para elementos interactivos */
+.nav-item, .register-btn, .edoc-logo {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Mejora para tablas */
+table {
+    animation: transitionIn-Y-bottom 0.6s ease-out;
+}

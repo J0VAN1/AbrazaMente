@@ -1,7 +1,4 @@
-   <?php
-
-    //learn from w3schools.com
-
+<?php
     session_start();
 
     if(isset($_SESSION["user"])){
@@ -28,18 +25,10 @@
     $userid= $userfetch["pid"];
     $username=$userfetch["pname"];
 
-
-    //echo $userid;
-    //echo $username;
-    
-
-
     date_default_timezone_set('Asia/Kolkata');
 
     $today = date('Y-m-d');
 
-
- //echo $userid;
  ?>
 
 <!DOCTYPE html>
@@ -88,7 +77,7 @@
              </tr>
              <tr class="menu-row" >
                     <td class="menu-btn menu-icon-home " >
-                        <a href="index.php" class="non-style-link-menu "><div><p class="menu-text">Home</p></a></div></a>
+                        <a href="index.php" class="non-style-link-menu "><div><p class="menu-text">Inicio</p></a></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row">

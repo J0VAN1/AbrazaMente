@@ -4,84 +4,137 @@ body{
     background-attachment: fixed;
     background-size: cover;
     height: 100%;
+    background-position: center;
+    /* Mejora: agregar filtro sutil al fondo */
+    position: relative;
+}
+
+/* Efecto overlay mejorado */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg, 
+        rgba(26, 26, 26, 0.7) 0%, 
+        rgba(26, 26, 26, 0.5) 50%,
+        rgba(26, 26, 26, 0.6) 100%
+    );
+    z-index: -1;
 }
 
 html, body {
     height: 100%;
     margin: 0;
-  }
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
   
 .full-height {
-    background: rgba(26, 26, 26, 0.548);
+    background: rgba(26, 26, 26, 0.45); 
     background-attachment: fixed;
     max-height: 100vh;
     height: 100vh;
-
-
+    backdrop-filter: blur(2px);  
+    border: 1px solid rgba(255, 255, 255, 0.1); 
 }
+
 table{
     width: 100%;
     padding-top: 5px;
-    
+    border-spacing: 0;
 }
+
 .heading-text{
     color: white;
-    font-size: 42px;
-    font-weight: 700;
-    line-height: 63px;
+    font-size: 3.5rem; 
+    font-weight: 800; 
+    line-height: 1.2;
     margin-top: 15%;
     text-align: center;
     margin-bottom: 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+    letter-spacing: -0.5px;
+    animation: transitionIn-Y-over 0.8s ease-out; 
 }
 
 .sub-text2{
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 17px;
-    line-height: 27px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2rem;
+    line-height: 1.6;
     font-weight: 400;
     text-align: center;
-    margin-top: 0;
+    margin-top: 1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    animation: transitionIn-Y-over 1s ease-out 0.2s both;
 }
-
 
 .register-btn{
-    background-color: rgba(240, 248, 255, 0.589);
+    background: linear-gradient(135deg, rgba(240, 248, 255, 0.9), rgba(255, 255, 255, 0.8));
     color: #345cc4;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px; 
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(52, 92, 196, 0.2);
 }
 
+.register-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(52, 92, 196, 0.3);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 248, 255, 0.9));
+}
 
 .edoc-logo{
     color: white;
-    font-weight: bolder;
-    font-size: 20px;
+    font-weight: 800; /* + peso */
+    font-size: 1.5rem;
     padding-left: 20px;
     animation: transitionIn-Y-over 0.5s;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.5px;
 }
 
 .edoc-logo-sub{
-    color: rgba(255, 255, 255, 0.733);
-    font-size: 12px;
-
+    color: rgba(255, 255, 255, 0.9); /* + visible */
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
 }
 
-
 .nav-item{
-    color: rgba(255, 255, 255, 0.671);
+    color: rgba(255, 255, 255, 0.85);
     text-align: center;
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 600; /* Más peso */
     animation: transitionIn-Y-over 0.5s;
+    padding: 10px 15px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .nav-item:hover{
-    color: #f0f0f0;
-
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .footer-hashen{
     position: absolute;
-    bottom: 0;
-    left: 45%;
-    font-size: 13px;
+    bottom: 2rem; /* Mejor uso de unidades */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
     animation: transitionIn-Y-over 0.5s;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    width: 100%;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }

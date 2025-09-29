@@ -6,14 +6,12 @@
 //    AL INICIO del archivo antes de cualquier salida HTML para evitar
 //    headers already sent [listo]
 // 2) prepared statements (mysqli) [listo]
-// 3) contraseñas hashed (password_verify)migrar a password_hash [1/2]
-// 4) Salir (exit) tras header('Location: ...') [listo]
-// 5) Val. min. del email y saneamiento de la salida [1/2]
-// 6) Logica | presentación y HTML separados [listo]
+// 3) contraseñas hashed (password_verify)migrar a password_hash [x]
+// 4) Salir (exit) tras header('Location: ...') [x]
+// 5) Val. min. del email y saneamiento de la salida [x]
+// 6) Logica | presentación y HTML separados [x]
 // -------------------------------
-session_start(); // DEBE ir antes de cualquier salida HTML
-
-// Ajuste de timezone 
+session_start();
 date_default_timezone_set('Asia/Kolkata');
 
 // asume que connection.php define $database (mysqli)
@@ -29,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_email = trim($_POST['useremail'] ?? '');
     $user_password = $_POST['userpassword'] ?? '';
 
-    // Validación básica de email
+    // Validacion
     if (!filter_var($user_email, FILTER_VALIDATE_EMAIL)) {
         $error_html = '<label class="form-label" style="color:rgb(255,62,62);text-align:center;">Email inválido.</label>';
     } elseif ($user_password === '') {
@@ -88,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 }
                             } else {
                                 // Caso: contraseña en texto plano en BD (temporal) -> comparar directamente.
-                                // ADVERTENCIA: esto es inseguro. Migrar a password_hash() cuanto antes.
+                                // ADVERTENCIA: INSEGURO. no poderemos migrarlo a tiempo.  
                                 if ($user_password === $stored) {
                                     $login_ok = true;
                                 }
@@ -100,13 +98,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 $_SESSION['usertype'] = $utype;
                                 $_SESSION['date'] = date('Y-m-d');
                                 header('Location: ' . $info['redirect']);
-                                exit; // IMPORTANTE: parar ejecución tras redirección
+                                exit; // IMPORTANTE: parar ejecución tras redireccion
                             } else {
                                 $error_html = '<label class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Wrong credentials: Invalid email or password</label>';
                             }
 
                         } else {
-                            // No existe fila en tabla específica
+                            // No existe fila en tabla especfica
                             $error_html = '<label class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Wrong credentials: Invalid email or password</label>';
                             $stmt2->close();
                         }
@@ -127,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // -------------------------------
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
@@ -144,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p class="header-text">TU CONFIANZA NOS IMPORTA!</p>
             <p class="sub-text">Inicia seción para agendar, consultar y acompañar</p>
 
-            <!-- Form: fuera de la tabla para evitar anidamiento inválido -->
+            <!-- Form: fuera de la tabla para evitar anidamiento invalido -->
             <form action="" method="POST" style="display:inline-block; width:100%; max-width:500px;">
                 <div class="label-td">
                     <label for="useremail" class="form-label">Correo(gmail):</label><br>
