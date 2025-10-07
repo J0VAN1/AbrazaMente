@@ -14,12 +14,12 @@
 ---
 
 ## 📌 Índice
-- [Descripción](#-descripción)
+- [Descripción](#-descripción-principales)
 - [Características](#-características)
 - [Tecnologías](#-tecnologías)
-- [Credenciales de ejemplo](#-credenciales-de-ejemplo)
+- [Credenciales de ejemplo](#-credenciales-de-prueba)
 - [Instalación rápida (Docker)](#-instalación-rápida-docker)
-- [Equipo](#-equipo)
+
 
 ---
 
