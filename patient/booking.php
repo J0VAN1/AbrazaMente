@@ -25,7 +25,7 @@
     $userid= $userfetch["pid"];
     $username=$userfetch["pname"];
 
-    date_default_timezone_set('Asia/Kolkata');
+    date_default_timezone_set('America/Mexico_City');
 
     $today = date('Y-m-d');
 

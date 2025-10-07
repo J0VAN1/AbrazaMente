@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: edoc-web
+    container_name: charmander-web
     ports:
       - "8080:80"
     volumes:
@@ -18,12 +18,12 @@ services:
 
   db:
     image: mariadb:10.5  # Usamos 10.5 que es más compatible
-    container_name: edoc-db
+    container_name: charmander-db
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: edoc
-      MYSQL_USER: edocuser
+      MYSQL_DATABASE: charmander
+      MYSQL_USER: charmanderuser
       MYSQL_PASSWORD: userpassword
     volumes:
       - db_data:/var/lib/mysql
@@ -33,7 +33,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: edoc-phpmyadmin
+    container_name: charmander-phpmyadmin
     restart: unless-stopped
     depends_on:
       - db

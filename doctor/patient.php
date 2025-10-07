@@ -63,7 +63,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <a href="../logout.php" ><input type="button" value="Log out" class="logout-btn btn-primary-soft btn"></a>
+                                    <a href="../logout.php" ><input type="button" value="Cerrar Sesión" class="logout-btn btn-primary-soft btn"></a>
                                 </td>
                             </tr>
                     </table>
@@ -71,7 +71,7 @@
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-dashbord" >
-                        <a href="index.php" class="non-style-link-menu "><div><p class="menu-text">Panel</p></a></div></a>
+                        <a href="index.php" class="non-style-link-menu "><div><p class="menu-text">Inicio</p></a></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row">
@@ -100,31 +100,31 @@
         </div>
 <?php       
 
-                    $selecttype="My";
-                    $current="My patients Only";
+                    $selecttype="Mis";
+                    $current="Solo mis Pacientes";
                     if($_POST){
 
                         if(isset($_POST["search"])){
                             $keyword=$_POST["search12"];
                             
                             $sqlmain= "select * from patient where pemail='$keyword' or pname='$keyword' or pname like '$keyword%' or pname like '%$keyword' or pname like '%$keyword%' ";
-                            $selecttype="my";
+                            $selecttype="mis";
                         }
                         
                         if(isset($_POST["filter"])){
                             if($_POST["showonly"]=='all'){
                                 $sqlmain= "select * from patient";
-                                $selecttype="All";
-                                $current="All patients";
+                                $selecttype="Todos los";
+                                $current="Todos los Pacientes";
                             }else{
                                 $sqlmain= "select * from appointment inner join patient on patient.pid=appointment.pid inner join schedule on schedule.scheduleid=appointment.scheduleid where schedule.docid=$userid;";
-                                $selecttype="My";
-                                $current="My patients Only";
+                                $selecttype="Mis";
+                                $current="Solo mis Pacientes";
                             }
                         }
                     }else{
                         $sqlmain= "select * from appointment inner join patient on patient.pid=appointment.pid inner join schedule on schedule.scheduleid=appointment.scheduleid where schedule.docid=$userid;";
-                        $selecttype="My";
+                        $selecttype="Mis";
                     }
 ?>
 
@@ -133,14 +133,14 @@
                 <tr >
                     <td width="13%">
 
-                    <a href="patient.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Back</font></button></a>
+                    <a href="patient.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Regresar</font></button></a>
                         
                     </td>
                     <td>
                         
                         <form action="" method="post" class="header-search">
 
-                            <input type="search" name="search12" class="input-text header-searchbar" placeholder="Search Patient name or Email" list="patient">&nbsp;&nbsp;
+                            <input type="search" name="search12" class="input-text header-searchbar" placeholder="Buscar Pacientes por Nombre Completo o Gmail" list="patient">&nbsp;&nbsp;
                             
                             <?php
                                 echo '<datalist id="patient">';
@@ -159,18 +159,18 @@
 ?>
                             
                        
-                            <input type="Submit" value="Search" name="search" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
+                            <input type="Submit" value="Buscar" name="search" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
                         
                         </form>
                         
                     </td>
                     <td width="15%">
                         <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
-                            Fecha actual
+                        Hoy mismo
                         </p>
                         <p class="heading-sub12" style="padding: 0;margin: 0;">
                             <?php 
-                        date_default_timezone_set('Asia/Kolkata');
+                        date_default_timezone_set('America/Mexico_City');
 
                         $date = date('Y-m-d');
                         echo $date;
@@ -187,7 +187,7 @@
                 
                 <tr>
                     <td colspan="4" style="padding-top:10px;">
-                        <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)"><?php echo $selecttype." Patients (".$list11->num_rows.")"; ?></p>
+                        <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)"><?php echo $selecttype." Pacientes: (".$list11->num_rows.")"; ?></p>
                     </td>
                     
                 </tr>
@@ -211,7 +211,7 @@
                         </select>
                     </td>
                     <td width="12%">
-                        <input type="submit"  name="filter" value=" Filter" class=" btn-primary-soft btn button-icon btn-filter"  style="padding: 15px; margin :0;width:100%">
+                        <input type="submit"  name="filter" value=" Filtrar" class=" btn-primary-soft btn button-icon btn-filter"  style="padding: 15px; margin :0;width:100%">
                         </form>
                     </td>
 
@@ -239,17 +239,17 @@
                                 <th class="table-headin">
                                     
                                 
-                                    NIC
+                                    CURP
                                     
                                 </th>
                                 <th class="table-headin">
                                 
                             
-                                Telefono
+                                Contacto
                                 
                                 </th>
                                 <th class="table-headin">
-                                    Email
+                                    Gmail
                                 </th>
                                 <th class="table-headin">
                                     
@@ -258,7 +258,7 @@
                                 </th>
                                 <th class="table-headin">
                                     
-                                    Detalles
+                                    Optar por
                                     
                                 </tr>
                         </thead>
@@ -314,8 +314,7 @@
                                         </td>
                                         <td >
                                         <div style="display:flex;justify-content: center;">
-                                        
-                                        <a href="?action=view&id='.$pid.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">View</font></button></a>
+                                        <a href="?action=view&id='.$pid.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Detalles</font></button></a>
                                        
                                         </div>
                                         </td>
@@ -354,25 +353,30 @@
             $tele=$row["ptel"];
             $address=$row["paddress"];
             echo '
+
             <div id="popup1" class="overlay">
                     <div class="popup">
                     <center>
+
+                        <div class="abc scroll">
+                        <table width="93%" class="sub-table scrolldown" border="0">
+                        <thead>
+
                         <a class="close" href="patient.php">&times;</a>
                         <div class="content">
-
                         </div>
                         <div style="display: flex;justify-content: center;">
                         <table width="80%" class="sub-table scrolldown add-doc-form-container" border="0">
-                        
+
                             <tr>
                                 <td>
                                     <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">View Details.</p><br><br>
                                 </td>
                             </tr>
                             <tr>
-                                
+
                                 <td class="label-td" colspan="2">
-                                    <label for="name" class="form-label">Patient ID: </label>
+                                    <label for="name" class="form-label">ID del Paciente: </label>
                                 </td>
                             </tr>
                             <tr>
@@ -385,7 +389,7 @@
                             <tr>
                                 
                                 <td class="label-td" colspan="2">
-                                    <label for="name" class="form-label">Name: </label>
+                                    <label for="name" class="form-label">Nombre: </label>
                                 </td>
                             </tr>
                             <tr>
@@ -396,7 +400,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="Email" class="form-label">Email: </label>
+                                    <label for="Email" class="form-label">Gmail: </label>
                                 </td>
                             </tr>
                             <tr>
@@ -406,7 +410,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="nic" class="form-label">NIC: </label>
+                                    <label for="nic" class="form-label">CURP: </label>
                                 </td>
                             </tr>
                             <tr>
@@ -416,7 +420,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="Tele" class="form-label">Telephone: </label>
+                                    <label for="Tele" class="form-label">Contacto: </label>
                                 </td>
                             </tr>
                             <tr>
@@ -426,7 +430,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="spec" class="form-label">Address: </label>
+                                    <label for="spec" class="form-label">Dirección: </label>
                                     
                                 </td>
                             </tr>
@@ -438,7 +442,7 @@
                             <tr>
                                 
                                 <td class="label-td" colspan="2">
-                                    <label for="name" class="form-label">Date of Birth: </label>
+                                    <label for="name" class="form-label">Natalicio: </label>
                                 </td>
                             </tr>
                             <tr>

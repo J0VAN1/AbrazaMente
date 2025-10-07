@@ -18,11 +18,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Database: `edoc`
---
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `admin`
@@ -40,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`aemail`, `apassword`) VALUES
-('admin@edoc.com', '123');
+('admin@ipn.com', 'charmander');
 
 -- --------------------------------------------------------
 
@@ -65,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `appointment` (
 --
 
 INSERT INTO `appointment` (`appoid`, `pid`, `apponum`, `scheduleid`, `appodate`) VALUES
-(1, 1, 1, 1, '2022-06-03');
+(1, 1, 1, 1, '2025-06-03');
 
 -- --------------------------------------------------------
 
@@ -91,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `doctor` (
 --
 
 INSERT INTO `doctor` (`docid`, `docemail`, `docname`, `docpassword`, `docnic`, `doctel`, `specialties`) VALUES
-(1, 'doctor@edoc.com', 'Test Doctor', '123', '000000000', '0110000000', 1),
+(1, 'especialista@ipn.com', 'Especialista Prueba', 'charmander', 'AAAAAAAAA', '5500551100', 1),
 (2, 'jovani@gmail.com', 'Sarabia Jovani', '123', '2022350996', '0700000000', 20);
 -- --------------------------------------------------------
 
@@ -117,9 +112,8 @@ CREATE TABLE IF NOT EXISTS `patient` (
 --
 
 INSERT INTO `patient` (`pid`, `pemail`, `pname`, `ppassword`, `paddress`, `pnic`, `pdob`, `ptel`) VALUES
-(1, 'patient@edoc.com', 'Test Patient', '123', 'Sri Lanka', '0000000000', '2026-01-01', '0120000000'),
-(2, 'emhashenudara@gmail.com', 'Hashen Udara', '123', 'Sri Lanka', '0110000000', '2025-06-03', '0700000000'),
-(3, 'sarabiajovani@gmail.com', 'Sarabia Jovani', '123', 'Sri Lanka', '0110000000', '2025-06-03', '0800000000');
+(1, 'paciente@ipn.com', 'Test Patient', '123', 'Tacubaya', 'BBBBAAA', '2026-01-01', '5522350996'),
+(2, 'sarabiajovani@gmail.com', 'Sarabia Jovani', '123', 'Oajaca', 'SAA202HBCRVA5', '2025-06-03', '55111000');
 
 -- --------------------------------------------------------
 
@@ -144,14 +138,9 @@ CREATE TABLE IF NOT EXISTS `schedule` (
 --
 
 INSERT INTO `schedule` (`scheduleid`, `docid`, `title`, `scheduledate`, `scheduletime`, `nop`) VALUES
-(1, '1', 'Test Session', '2025-09-01', '18:00:00', 50),
-(2, '1', '1', '2025-06-10', '20:36:00', 1),
-(3, '1', '12', '2025-06-10', '20:33:00', 1),
-(4, '1', '1', '2025-06-10', '12:32:00', 1),
-(5, '1', '1', '2025-06-10', '20:35:00', 1),
-(6, '1', '12', '2025-06-10', '20:35:00', 1),
-(7, '1', '1', '2025-06-24', '20:36:00', 1),
-(8, '1', '12', '2025-06-10', '13:33:00', 1);
+(1, '1', 'Sesión Prueba', '2025-09-01', '18:00:00', 8),
+(2, '1', '1', '2025-06-10', '20:36:00', 12);
+
 
 -- --------------------------------------------------------
 
@@ -237,10 +226,9 @@ CREATE TABLE IF NOT EXISTS `webuser` (
 START TRANSACTION;
 
 INSERT INTO `webuser` (`email`, `usertype`) VALUES
-('admin@edoc.com', 'a'),
-('doctor@edoc.com', 'd'),
-('patient@edoc.com', 'p'),
-('emhashenudara@gmail.com', 'p'),
+('admin@ipn.com', 'a'),
+('especialista@ipn.com', 'd'),
+('paciente@ipn.com', 'p'),
 ('jovani@gmail.com', 'd');
 COMMIT;
 

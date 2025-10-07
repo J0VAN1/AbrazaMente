@@ -50,12 +50,12 @@
                                 </td>
                                 <td style="padding:0px;margin:0px;">
                                     <p class="profile-title">Administrator</p>
-                                    <p class="profile-subtitle">admin@edoc.com</p>
+                                    <p class="profile-subtitle">admin@ipn.com</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                <a href="../logout.php" ><input type="button" value="Log out" class="logout-btn btn-primary-soft btn"></a>
+                                <a href="../logout.php" ><input type="button" value="Cerrar Sesión" class="logout-btn btn-primary-soft btn"></a>
                                 </td>
                             </tr>
                     </table>
@@ -102,12 +102,12 @@
                     </td>
                     <td width="15%">
                         <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
-                            Cita de hoy
+                            Hoy mismo
                         </p>
                         <p class="heading-sub12" style="padding: 0;margin: 0;">
                             <?php 
 
-                        date_default_timezone_set('Asia/Kolkata');
+                        date_default_timezone_set('America/Mexico_City');
 
                         $today = date('Y-m-d');
                         echo $today;
@@ -128,7 +128,7 @@
                     <td colspan="4" >
                         <div style="display: flex;margin-top: 40px;">
                         <div class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49);margin-top: 5px;">Programar una sesión</div>
-                        <a href="?action=add-session&id=none&error=0" class="non-style-link"><button  class="login-btn btn-primary btn button-icon"  style="margin-left:25px;background-image: url('../img/icons/add.svg');">Add a Session</font></button>
+                        <a href="?action=add-session&id=none&error=0" class="non-style-link"><button  class="login-btn btn-primary btn button-icon"  style="margin-left:25px;background-image: url('../img/icons/add.svg');">Agregar</font></button>
                         </a>
                         </div>
                     </td>
@@ -149,7 +149,7 @@
 
                            </td> 
                         <td width="5%" style="text-align: center;">
-                        Date:
+                        Fecha:
                         </td>
                         <td width="30%">
                         <form action="" method="post">
@@ -158,11 +158,11 @@
 
                         </td>
                         <td width="5%" style="text-align: center;">
-                        Doctor:
+                        Especialista: 
                         </td>
                         <td width="30%">
                         <select name="docid" id="" class="box filter-container-items" style="width:90% ;height: 37px;margin: 0;" >
-                            <option value="" disabled selected hidden>Selecciona al Psicologo de la lista</option><br/>
+                            <option value="" disabled selected hidden>Selecciona al Especialista de la lista</option><br/>
                                 
                             <?php 
                             
@@ -181,7 +181,7 @@
                         </select>
                     </td>
                     <td width="12%">
-                        <input type="submit"  name="filter" value=" Filter" class=" btn-primary-soft btn button-icon btn-filter"  style="padding: 15px; margin :0;width:100%">
+                        <input type="submit"  name="filter" value=" Filtrar" class=" btn-primary-soft btn button-icon btn-filter"  style="padding: 15px; margin :0;width:100%">
                         </form>
                     </td>
 
@@ -250,7 +250,7 @@
                                 </th>
                                 
                                 <th class="table-headin">
-                                    Psicologo
+                                    Especialista
                                 </th>
                                 <th class="table-headin">
                                     
@@ -265,7 +265,7 @@
                                 
                                 <th class="table-headin">
                                     
-                                    Eventos
+                                    Optar por 
                                     
                                 </tr>
                         </thead>
@@ -285,7 +285,7 @@
                                     
                                     <br>
                                     <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">¡No se encontró nada relacionado con tu búsqueda!</p>
-                                    <a class="non-style-link" href="schedule.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Show all Sessions &nbsp;</font></button>
+                                    <a class="non-style-link" href="schedule.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Mostrar todas las sesiones &nbsp;</font></button>
                                     </a>
                                     </center>
                                     <br><br><br><br>
@@ -319,7 +319,7 @@
                                         <td>
                                         <div style="display:flex;justify-content: center;">
                                         
-                                        <a href="?action=view&id='.$scheduleid.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Ver</font></button></a>
+                                        <a href="?action=view&id='.$scheduleid.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Detalles</font></button></a>
                                        &nbsp;&nbsp;&nbsp;
                                        <a href="?action=drop&id='.$scheduleid.'&name='.$title.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Eliminar</font></button></a>
                                         </div>
@@ -370,30 +370,30 @@
 
                             <tr>
                                 <td>
-                                    <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Añadir Nueva Sesion.</p><br>
+                                    <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Añadir Nueva Sesión.</p><br>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
                                 <form action="add-session.php" method="POST" class="add-new-form">
-                                    <label for="title" class="form-label">Titulo de la sesion : </label>
+                                    <label for="title" class="form-label">Titulo de la sesión: </label>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <input type="text" name="title" class="input-text" placeholder="Nombre e la sesion" required><br>
+                                    <input type="text" name="title" class="input-text" placeholder="Nombre de la sesión" required><br>
                                 </td>
                             </tr>
                             <tr>
                                 
                                 <td class="label-td" colspan="2">
-                                    <label for="docid" class="form-label">Seleccionar Psicologo: </label>
+                                    <label for="docid" class="form-label">Seleccionar Especialista: </label>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
                                     <select name="docid" id="" class="box" >
-                                    <option value="" disabled selected hidden>Selecciona el psicologo de la lista</option><br/>';
+                                    <option value="" disabled selected hidden>Selecciona al Especialista de la lista</option><br/>';
                                         
         
                                         $list11 = $database->query("select  * from  doctor order by docname asc;");
@@ -413,7 +413,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="nop" class="form-label">Número de pacientes/Numero de citas : </label>
+                                    <label for="nop" class="form-label">Número de pacientes/Numero de citas: </label>
                                 </td>
                             </tr>
                             <tr>
@@ -433,7 +433,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="time" class="form-label">Hora de la sesion: </label>
+                                    <label for="time" class="form-label">Hora de la sesión: </label>
                                 </td>
                             </tr>
                             <tr>
@@ -489,7 +489,7 @@
             <div id="popup1" class="overlay">
                     <div class="popup">
                     <center>
-                        <h2>¿Estas seguro?</h2>
+                        <h2>¿Estas segurx?</h2>
                         <a class="close" href="schedule.php">&times;</a>
                         <div class="content">
                             Desea eliminar este registro<br>('.substr($nameget,0,40).').
@@ -542,7 +542,7 @@
                             <tr>
                                 
                                 <td class="label-td" colspan="2">
-                                    <label for="name" class="form-label">Titulo de la sesion: </label>
+                                    <label for="name" class="form-label">Titulo de la sesión: </label>
                                 </td>
                             </tr>
                             <tr>
@@ -553,7 +553,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="Email" class="form-label">Psicologo de esta sesion </label>
+                                    <label for="Email" class="form-label">Especialista de esta sesión </label>
                                 </td>
                             </tr>
                             <tr>
@@ -563,7 +563,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="nic" class="form-label">Fecha de la sesion: </label>
+                                    <label for="nic" class="form-label">Fecha de la sesión: </label>
                                 </td>
                             </tr>
                             <tr>
@@ -597,20 +597,20 @@
                                  <thead>
                                  <tr>   
                                         <th class="table-headin">
-                                             Patient ID
+                                             ID del paciente
                                          </th>
                                          <th class="table-headin">
-                                             Patient name
+                                             Paciente 
                                          </th>
                                          <th class="table-headin">
                                              
-                                             Appointment number
+                                             Número de cita
                                              
                                          </th>
                                         
                                          
                                          <th class="table-headin">
-                                             Patient Telephone
+                                             Teléfono del paciente
                                          </th>
                                          
                                  </thead>

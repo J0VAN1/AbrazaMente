@@ -51,12 +51,12 @@
                                 </td>
                                 <td style="padding:0px;margin:0px;">
                                     <p class="profile-title">Administrator</p>
-                                    <p class="profile-subtitle">Charmander Admin</p>
+                                    <p class="profile-subtitle">admin@ipn.com</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                <a href="../logout.php" ><input type="button" value="Log out" class="logout-btn btn-primary-soft btn"></a>
+                                <a href="../logout.php" ><input type="button" value="Cerrar Sesión" class="logout-btn btn-primary-soft btn"></a>
                                 </td>
                             </tr>
                     </table>
@@ -69,12 +69,12 @@
                 </tr>
                 <tr class="menu-row">
                     <td class="menu-btn menu-icon-doctor ">
-                        <a href="doctors.php" class="non-style-link-menu "><div><p class="menu-text">Psicologos</p></a></div>
+                        <a href="doctors.php" class="non-style-link-menu "><div><p class="menu-text">Especialistas</p></a></div>
                     </td>
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-schedule">
-                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Horarios</p></div></a>
+                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Cronograma</p></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row">
@@ -120,18 +120,18 @@
 ?>
                             
                        
-                            <input type="Submit" value="Search" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
+                            <input type="Submit" value="Buscar" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
                         
                         </form>
                         
                     </td>
                     <td width="15%">
                         <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
-                            Cita de hoy
+                            Hoy mismo
                         </p>
                         <p class="heading-sub12" style="padding: 0;margin: 0;">
                             <?php 
-                        date_default_timezone_set('Asia/Kolkata');
+                        date_default_timezone_set('America/Mexico_City');
 
                         $date = date('Y-m-d');
                         echo $date;
@@ -148,7 +148,7 @@
                 
                 <tr>
                     <td colspan="4" style="padding-top:10px;">
-                        <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">Tdos los pacientes (<?php echo $list11->num_rows; ?>)</p>
+                        <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">Todos los pacientes (<?php echo $list11->num_rows; ?>)</p>
                     </td>
                     
                 </tr>
@@ -182,21 +182,21 @@
                                 <th class="table-headin">
                                     
                                 
-                                    Identificación
+                                CURP
                                     
                                 </th>
                                 <th class="table-headin">
                                 
                             
-                                    Telefono
+                                    Teléfono
                                 
                                 </th>
                                 <th class="table-headin">
-                                    Correo
+                                    Gmail 
                                 </th>
                                 <th class="table-headin">
                                     
-                                    Fecha de nacimiento
+                                    Natalicio
                                     
                                 </th>
                                 <th class="table-headin">
@@ -300,6 +300,10 @@
             <div id="popup1" class="overlay">
                     <div class="popup">
                     <center>
+                         <div class="abc scroll">
+                        <table width="93%" class="sub-table scrolldown" border="0">
+                        <thead>
+
                         <a class="close" href="patient.php">&times;</a>
                         <div class="content">
 
@@ -339,7 +343,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="Email" class="form-label">Correo: </label>
+                                    <label for="Email" class="form-label">Gmail: </label>
                                 </td>
                             </tr>
                             <tr>
@@ -349,7 +353,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="nic" class="form-label">Identificacion: </label>
+                                    <label for="nic" class="form-label">CURP: </label>
                                 </td>
                             </tr>
                             <tr>
@@ -359,7 +363,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="Tele" class="form-label">Telefono: </label>
+                                    <label for="Tele" class="form-label">Teléfono: </label>
                                 </td>
                             </tr>
                             <tr>
@@ -381,7 +385,7 @@
                             <tr>
                                 
                                 <td class="label-td" colspan="2">
-                                    <label for="name" class="form-label">Fecha de nacimiento: </label>
+                                    <label for="name" class="form-label">Natalicio: </label>
                                 </td>
                             </tr>
                             <tr>

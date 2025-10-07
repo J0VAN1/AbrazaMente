@@ -1,8 +1,8 @@
 <?php
 $host = 'db';
-$user = 'edocuser';
+$user = 'charmanderuser';
 $password = 'userpassword';
-$dbname = 'edoc';
+$dbname = 'charmander';
 
 // Crear conexión
 $database = new mysqli($host, $user, $password, $dbname);

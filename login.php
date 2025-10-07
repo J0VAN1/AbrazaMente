@@ -1,18 +1,7 @@
 <?php
-// LOGIN.PHP CAMBIOS ECHOS EN EQUIPO:
-// -------------------------------
-// Correcciones min. funcionales aplicadas:
-// 1) Mover logica PHP session_start(), redirecciones y consultas
-//    AL INICIO del archivo antes de cualquier salida HTML para evitar
-//    headers already sent [listo]
-// 2) prepared statements (mysqli) [listo]
-// 3) contraseñas hashed (password_verify)migrar a password_hash [x]
-// 4) Salir (exit) tras header('Location: ...') [x]
-// 5) Val. min. del email y saneamiento de la salida [x]
-// 6) Logica | presentación y HTML separados [x]
-// -------------------------------
+
 session_start();
-date_default_timezone_set('Asia/Kolkata');
+date_default_timezone_set('America/Mexico_City');
 
 // asume que connection.php define $database (mysqli)
 include 'connection.php';
