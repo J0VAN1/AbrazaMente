@@ -39,7 +39,8 @@ AbrazaMente es una aplicación web para gestionar citas, sesiones y el historial
 ## 🎬 Demo / Capturas
 > Inserta aquí un GIF corto de flujo: reservar una cita → confirmación → ver en admin.  
 Capturas (ejemplos):
-- `./capturas/Portada.png`  
+!(./capturas/Portada.png)
+
 - `./capturas/ejemploAdmin.png`  
 - `./capturas/phpadmin.png`
 
