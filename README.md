@@ -15,19 +15,11 @@
 
 ## 📌 Índice
 - [Descripción](#-descripción)
-- [Demo / Capturas](#-demo--capturas)
 - [Características](#-características)
 - [Tecnologías](#-tecnologías)
-- [Instalación rápida (Docker)](#-instalación-rápida-docker)
-- [Configuración / Variables de entorno](#-configuración--variables-de-entorno)
 - [Credenciales de ejemplo](#-credenciales-de-ejemplo)
-- [Estructura de la base de datos (resumen)](#-estructura-de-la-base-de-datos-resumen)
-- [Buenas prácticas de seguridad](#-buenas-prácticas-de-seguridad)
-- [Cómo actualizar este README y desplegar (consola)](#-cómo-actualizar-este-readme-y-desplegar-consola)
-- [Mejoras sugeridas (estética y técnica)](#-mejoras-sugeridas-estética-y-técnica)
+- [Instalación rápida (Docker)](#-instalación-rápida-docker)
 - [Equipo](#-equipo)
-- [Licencia](#-licencia)
-- [Soporte](#-soporte)
 
 ---
 
@@ -36,17 +28,6 @@ AbrazaMente es una aplicación web para gestionar citas, sesiones y el historial
 
 ---
 
-## 🎬 Demo / Capturas
-
-A continuación algunas capturas reales del sistema (usa rutas relativas dentro del repo):
-
-### Panel de Administración
-![Panel de Administración](./capturas/ejemploAdmin.png)
-*Vista del panel de administración donde se gestionan especialistas, citas y sesiones.*
-
-### Gestión de Base de Datos (phpMyAdmin)
-![phpMyAdmin - Gestión de Base de Datos](./capturas/phpadmin.png)
-*Interfaz de phpMyAdmin vinculada al contenedor MariaDB para administración y consultas.*---
 
 ## 🚀 Características principales
 - Roles: **Administrador**, **Especialista/Doctor**, **Paciente**
@@ -62,8 +43,19 @@ A continuación algunas capturas reales del sistema (usa rutas relativas dentro 
 - Backend: PHP 7.4+ (Apache)
 - Base de datos: MariaDB 10.5
 - Contenedores: Docker, Docker Compose
-- Frontend: HTML5, CSS3, JavaScript (vanilla)
-- Recomendado: migrar a PHP 8.x para soporte y seguridad
+- Frontend: HTML5, CSS3 (vanilla)
+
+---
+## 🔐 Credenciales de prueba 
+
+- Admin: admin@ipn.com
+- / 123
+
+- Doctor: especialista@ipn.com
+- / 123
+
+- Paciente: paciente@ipn.com
+- / 123: patient@edoc.com
 
 ---
 
@@ -76,11 +68,8 @@ A continuación algunas capturas reales del sistema (usa rutas relativas dentro 
 git clone https://github.com/J0VAN1/AbrazaMente.git
 cd AbrazaMente
 
-# 2) Crear archivo de entorno (copiar ejemplo)
-cp .env.example .env   # editar .env según sea necesario
-
-# 3) Levantar contenedores (reconstruir)
-docker-compose up -d --build
+# 2) Levantar contenedores (reconstruir)
+docker compose up -d --build
 
 # Accesos típicos
 # App:       http://localhost:8080
