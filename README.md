@@ -37,13 +37,16 @@ AbrazaMente es una aplicación web para gestionar citas, sesiones y el historial
 ---
 
 ## 🎬 Demo / Capturas
-![Hero — AbrazaMente](./capturas/ejemploAdmin.png)
-- `./capturas/ejemploAdmin.png`  
-- `./capturas/phpadmin.png`
 
-*(Asegúrate de optimizar las imágenes y añadir `alt` descriptivos.)*
+A continuación algunas capturas reales del sistema (usa rutas relativas dentro del repo):
 
----
+### Panel de Administración
+![Panel de Administración](./capturas/ejemploAdmin.png)
+*Vista del panel de administración donde se gestionan especialistas, citas y sesiones.*
+
+### Gestión de Base de Datos (phpMyAdmin)
+![phpMyAdmin - Gestión de Base de Datos](./capturas/phpadmin.png)
+*Interfaz de phpMyAdmin vinculada al contenedor MariaDB para administración y consultas.*---
 
 ## 🚀 Características principales
 - Roles: **Administrador**, **Especialista/Doctor**, **Paciente**
