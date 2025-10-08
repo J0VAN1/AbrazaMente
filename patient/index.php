@@ -1,33 +1,46 @@
 <?php
+session_start();
 
-    //learn from w3schools.com
-
-    session_start();
+//echo "<pre>";
+//echo "Session data:\n";
+//print_r($_SESSION);
+//echo "</pre>";
 
     if(isset($_SESSION["user"])){
         if(($_SESSION["user"])=="" or $_SESSION['usertype']!='p'){
             header("location: ../login.php");
+            exit;
         }else{
             $useremail=$_SESSION["user"];
         }
 
     }else{
         header("location: ../login.php");
+        exit;
     }
     
 
     //import database
-    include("../connection.php");
+   include("../connection.php");
 
-    $sqlmain= "select * from patient where pemail=?";
-    $stmt = $database->prepare($sqlmain);
-    $stmt->bind_param("s",$useremail);
-    $stmt->execute();
-    $userrow = $stmt->get_result();
-    $userfetch=$userrow->fetch_assoc();
+$sqlmain= "select * from patient where pemail=?";
+$stmt = $database->prepare($sqlmain);
+$stmt->bind_param("s",$useremail);
+$stmt->execute();
+$userrow = $stmt->get_result();
+$userfetch=$userrow->fetch_assoc();
 
-    $userid= $userfetch["pid"];
-    $username=$userfetch["pname"];
+// DEBUG: Verificar si se encontró el usuario
+if(!$userfetch) {
+    echo "<h3>ERROR: No se encontró usuario en la BD con email: $useremail</h3>";
+        echo "<p>Verifica que el usuario se insertó correctamente en la tabla 'patient'</p>";
+    exit;
+} else {
+   $userid= $userfetch["pid"];
+        $username=$userfetch["pname"];
+    // DEBUG
+//   echo "<p>Usuario encontrado en BD: ID=$userid, Name=$username</p>";
+}
 
 ?>
 

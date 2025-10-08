@@ -7,6 +7,10 @@
 -- Server version: 5.7.26
 -- PHP Version: 7.3.5
 
+CREATE USER IF NOT EXISTS 'charmanderuser'@'%' IDENTIFIED BY 'userpassword';
+GRANT ALL PRIVILEGES ON charmander.* TO 'charmanderuser'@'%';
+FLUSH PRIVILEGES;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -18,6 +22,9 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+-- Crear base de datos si no existe
+CREATE DATABASE IF NOT EXISTS charmander;
+USE charmander;
 
 --
 -- Table structure for table `admin`
@@ -25,10 +32,10 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE IF NOT EXISTS `admin` (
-  `aemail` varchar(255) NOT NULL,
+  `aemail` varchar(100) NOT NULL,
   `apassword` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`aemail`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin`
@@ -53,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `appointment` (
   PRIMARY KEY (`appoid`),
   KEY `pid` (`pid`),
   KEY `scheduleid` (`scheduleid`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `appointment`
@@ -71,15 +78,15 @@ INSERT INTO `appointment` (`appoid`, `pid`, `apponum`, `scheduleid`, `appodate`)
 DROP TABLE IF EXISTS `doctor`;
 CREATE TABLE IF NOT EXISTS `doctor` (
   `docid` int(11) NOT NULL AUTO_INCREMENT,
-  `docemail` varchar(255) DEFAULT NULL,
+  `docemail` varchar(100) DEFAULT NULL,
   `docname` varchar(255) DEFAULT NULL,
   `docpassword` varchar(255) DEFAULT NULL,
-  `docnic` varchar(15) DEFAULT NULL,
+  `docnic` varchar(18) DEFAULT NULL,
   `doctel` varchar(15) DEFAULT NULL,
   `specialties` int(2) DEFAULT NULL,
   PRIMARY KEY (`docid`),
   KEY `specialties` (`specialties`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `doctor`
@@ -88,6 +95,7 @@ CREATE TABLE IF NOT EXISTS `doctor` (
 INSERT INTO `doctor` (`docid`, `docemail`, `docname`, `docpassword`, `docnic`, `doctel`, `specialties`) VALUES
 (1, 'especialista@ipn.com', 'Especialista Prueba', 'charmander', 'AAAAAAAAA', '5500551100', 1),
 (2, 'jovani@gmail.com', 'Sarabia Jovani', '123', '2022350996', '0700000000', 20);
+
 -- --------------------------------------------------------
 
 --
@@ -97,23 +105,25 @@ INSERT INTO `doctor` (`docid`, `docemail`, `docname`, `docpassword`, `docnic`, `
 DROP TABLE IF EXISTS `patient`;
 CREATE TABLE IF NOT EXISTS `patient` (
   `pid` int(11) NOT NULL AUTO_INCREMENT,
-  `pemail` varchar(255) DEFAULT NULL,
+  `pemail` varchar(100) DEFAULT NULL,
   `pname` varchar(255) DEFAULT NULL,
   `ppassword` varchar(255) DEFAULT NULL,
   `paddress` varchar(255) DEFAULT NULL,
-  `pnic` varchar(15) DEFAULT NULL,
+  `pnic` varchar(18) DEFAULT NULL,
   `pdob` date DEFAULT NULL,
   `ptel` varchar(15) DEFAULT NULL,
-  PRIMARY KEY (`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`pid`),
+  UNIQUE KEY `pemail` (`pemail`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `patient`
+-- NOTA: Fechas corregidas para que no sean futuras
 --
 
 INSERT INTO `patient` (`pid`, `pemail`, `pname`, `ppassword`, `paddress`, `pnic`, `pdob`, `ptel`) VALUES
-(1, 'paciente@ipn.com', 'Test Patient', '123', 'Tacubaya', 'BBBBAAA', '2026-01-01', '5522350996'),
-(2, 'sarabiajovani@gmail.com', 'Sarabia Jovani', '123', 'Oajaca', 'SAA202HBCRVA5', '2025-06-03', '55111000');
+(1, 'paciente@ipn.com', 'Test Patient', '123', 'Tacubaya', 'BBBBAAA', '2000-01-01', '5522350996'),
+(2, 'sarabiajovani@gmail.com', 'Sarabia Jovani', '123', 'Oaxaca', 'SAA202HBCRVA5', '1995-06-03', '55111000');
 
 -- --------------------------------------------------------
 
@@ -124,23 +134,22 @@ INSERT INTO `patient` (`pid`, `pemail`, `pname`, `ppassword`, `paddress`, `pnic`
 DROP TABLE IF EXISTS `schedule`;
 CREATE TABLE IF NOT EXISTS `schedule` (
   `scheduleid` int(11) NOT NULL AUTO_INCREMENT,
-  `docid` varchar(255) DEFAULT NULL,
+  `docid` int(11) DEFAULT NULL,  -- CORREGIDO: Cambiado de VARCHAR a INT
   `title` varchar(255) DEFAULT NULL,
   `scheduledate` date DEFAULT NULL,
   `scheduletime` time DEFAULT NULL,
   `nop` int(4) DEFAULT NULL,
   PRIMARY KEY (`scheduleid`),
   KEY `docid` (`docid`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `schedule`
 --
 
 INSERT INTO `schedule` (`scheduleid`, `docid`, `title`, `scheduledate`, `scheduletime`, `nop`) VALUES
-(1, '1', 'Sesión Prueba', '2025-09-01', '18:00:00', 8),
-(2, '1', '1', '2025-06-10', '20:36:00', 12);
-
+(1, 1, 'Sesión Prueba', '2025-09-01', '18:00:00', 8),
+(2, 1, 'Consulta General', '2025-06-10', '20:36:00', 12);
 
 -- --------------------------------------------------------
 
@@ -153,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `specialties` (
   `id` int(2) NOT NULL,
   `sname` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `specialties`
@@ -215,21 +224,22 @@ INSERT INTO `specialties` (`id`, `sname`) VALUES
 
 DROP TABLE IF EXISTS `webuser`;
 CREATE TABLE IF NOT EXISTS `webuser` (
-  `email` varchar(255) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `usertype` char(1) DEFAULT NULL,
   PRIMARY KEY (`email`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `webuser`
 --
-START TRANSACTION;
 
 INSERT INTO `webuser` (`email`, `usertype`) VALUES
 ('admin@ipn.com', 'a'),
 ('especialista@ipn.com', 'd'),
 ('paciente@ipn.com', 'p'),
-('jovani@gmail.com', 'd');
+('jovani@gmail.com', 'd'),
+('sarabiajovani@gmail.com', 'p');
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

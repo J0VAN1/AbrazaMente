@@ -152,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
 
                 <div style="margin-top:12px;">
-                    <input type="submit" value="Login" class="login-btn btn-primary btn">
+                    <input type="submit" value="Ingresar" class="login-btn btn-primary btn">
                 </div>
             </form>
 

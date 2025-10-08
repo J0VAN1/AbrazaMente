@@ -13,20 +13,38 @@ $_SESSION["date"]=$date;
 
 
 if($_POST){
-
+    // Validaciones básicas
+    $fname = trim($_POST['fname']);
+    $lname = trim($_POST['lname']);
+    $address = trim($_POST['address']);
+    $nic = trim($_POST['nic']);
+    $dob = $_POST['dob'];
     
+    // Validar que no estén vacíos
+    if(empty($fname) || empty($lname) || empty($address) || empty($nic) || empty($dob)) {
+        $error = '<label style="color:red;text-align:center;">Todos los campos son obligatorios</label>';
+    }
+    // Validar fecha de nacimiento (no puede ser futura)
+    else if(strtotime($dob) > time()) {
+        $error = '<label style="color:red;text-align:center;">La fecha de nacimiento no puede ser futura</label>';
+    }
+    // Validar CURP (formato básico: 4 letras, 6 números, 6 letras, 2 caracteres)
+    else if(!preg_match('/^[A-Za-z]{4}[0-9]{6}[A-Za-z]{6}[0-9A-Za-z]{2}$/', $nic)) {
+        $error = '<label style="color:red;text-align:center;">Formato de CURP inválido (4 letras, 6 números, 6 letras, 2 caracteres)</label>';
+    }
+    else {
+        $_SESSION["personal"]=array(
+            'fname'=>$fname,
+            'lname'=>$lname,
+            'address'=>$address,
+            'nic'=>$nic,
+            'dob'=>$dob
+        );
 
-    $_SESSION["personal"]=array(
-        'fname'=>$_POST['fname'],
-        'lname'=>$_POST['lname'],
-        'address'=>$_POST['address'],
-        'nic'=>$_POST['nic'],
-        'dob'=>$_POST['dob']
-    );
+     header("location: create-account.php");
+        exit;
 
-
- header("location: create-account.php");
-    exit;
+    }
 }
 
 ?>
@@ -123,6 +141,13 @@ if($_POST){
                     </form>
             </tr>
         </table>
+
+    <?php if(isset($error)): ?>
+            <div style="margin-top: 20px;">
+                <?php echo $error; ?>
+            </div>
+        <?php endif; ?>
+
 
     </div>
 </center>

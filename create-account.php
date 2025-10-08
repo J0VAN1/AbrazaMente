@@ -1,65 +1,100 @@
 <?php
 session_start();
 
-$_SESSION["user"]="";
-$_SESSION["usertype"]="";
-
 // Set the new timezone
 date_default_timezone_set('America/Mexico_City');
 $date = date('Y-m-d');
 
-$_SESSION["date"]=$date;
+if(!isset($_SESSION["date"])){
+    $_SESSION["date"]=$date;
+}
 
 //import database
 include("connection.php");
 
-if($_POST){
-
-    $result= $database->query("select * from webuser");
-
-    $fname=$_SESSION['personal']['fname'];
-    $lname=$_SESSION['personal']['lname'];
-    $name=$fname." ".$lname;
-    $address=$_SESSION['personal']['address'];
-    $nic=$_SESSION['personal']['nic'];
-    $dob=$_SESSION['personal']['dob'];
-    $email=$_POST['newemail'];
-    $tele=$_POST['tele'];
-    $newpassword=$_POST['newpassword'];
-    $cpassword=$_POST['cpassword'];
-    
-    if ($newpassword==$cpassword){
-        $sqlmain= "select * from webuser where email=?;";
-        $stmt = $database->prepare($sqlmain);
-        $stmt->bind_param("s",$email);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if($result->num_rows==1){
-            $error='<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Already have an account for this Email address.</label>';
-        }else{
-            
-            $database->query("insert into patient(pemail,pname,ppassword, paddress, pnic,pdob,ptel) values('$email','$name','$newpassword','$address','$nic','$dob','$tele');");
-            $database->query("insert into webuser values('$email','p')");
-
-            //print_r("insert into patient values($pid,'$email','$fname','$lname','$newpassword','$address','$nic','$dob','$tele');");
-            $_SESSION["user"]=$email;
-            $_SESSION["usertype"]="p";
-            $_SESSION["username"]=$fname;
-
-            header('Location: patient/index.php');
-            $error='<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;"></label>';
-        }
-        
-    }else{
-        $error='<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Password Conformation Error! Reconform Password</label>';
-    }
-
-    
-}else{
-    //header('location: signup.php');
-    $error='<label for="promter" class="form-label"></label>';
+// Verificar conexión
+if ($database->connect_error) {
+    die("Connection failed: " . $database->connect_error);
 }
 
+if($_POST){
+    // Verificar que los datos de sesión existan
+    if(!isset($_SESSION['personal'])) {
+        header("location: signup.php");
+        exit;
+    }
+
+    $fname = $_SESSION['personal']['fname'];
+    $lname = $_SESSION['personal']['lname'];
+    $name = $fname . " " . $lname;
+    $address = $_SESSION['personal']['address'];
+    $nic = $_SESSION['personal']['nic'];
+    $dob = $_SESSION['personal']['dob'];
+    $email = $_POST['newemail'];
+    $tele = $_POST['tele'];
+    $newpassword = $_POST['newpassword'];
+    $cpassword = $_POST['cpassword'];
+    
+    if ($newpassword == $cpassword){
+        // Verificar si el email ya existe
+        $sqlmain = "SELECT * FROM webuser WHERE email=?";
+        $stmt = $database->prepare($sqlmain);
+        if($stmt === false) {
+            $error = '<label style="color:red;">Error en la consulta</label>';
+        } else {
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            
+            if($result->num_rows == 1){
+                $error = '<label style="color:red;">Ya existe una cuenta con este email</label>';
+            } else {
+                // INSERTAR en paciente
+                $stmt1 = $database->prepare("INSERT INTO patient (pemail, pname, ppassword, paddress, pnic, pdob, ptel) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                if($stmt1 === false) {
+                    $error = '<label style="color:red;">Error al preparar inserción en patient: ' . $database->error . '</label>';
+                } else {
+                    $stmt1->bind_param("sssssss", $email, $name, $newpassword, $address, $nic, $dob, $tele);
+                    
+                    if($stmt1->execute()) {
+                        // INSERTAR en webuser
+                        $stmt2 = $database->prepare("INSERT INTO webuser (email, usertype) VALUES (?, ?)");
+                        if($stmt2 === false) {
+                            $error = '<label style="color:red;">Error al preparar inserción en webuser: ' . $database->error . '</label>';
+                        } else {
+                            $usertype = 'p';
+                            $stmt2->bind_param("ss", $email, $usertype);
+                            
+                            if($stmt2->execute()) {
+                                // ÉXITO - establecer sesión y redirigir
+                                $_SESSION["user"] = $email;
+                                $_SESSION["usertype"] = "p";
+                                $_SESSION["username"] = $fname;
+                                
+                                // Limpiar datos temporales
+                                unset($_SESSION['personal']);
+                                
+                                header('Location: patient/index.php');
+                                exit;
+                            } else {
+                                $error = '<label style="color:red;">Error al insertar en webuser: ' . $stmt2->error . '</label>';
+                            }
+                            $stmt2->close();
+                        }
+                    } else {
+                        $error = '<label style="color:red;">Error al insertar en patient: ' . $stmt1->error . '</label>';
+                    }
+                    $stmt1->close();
+                }
+            }
+            $stmt->close();
+        }
+    } else {
+        $error = '<label style="color:red;">Las contraseñas no coinciden</label>';
+    }
+} else {
+    $error = '<label></label>';
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -70,11 +105,15 @@ if($_POST){
     <link rel="stylesheet" href="css/animations.css">  
     <link rel="stylesheet" href="css/main.css">  
     <link rel="stylesheet" href="css/signup.css">
-        
     <title>Create Account</title>
     <style>
         .container{
             animation: transitionIn-X 0.5s;
+        }
+        .error-message {
+            color: red;
+            text-align: center;
+            margin: 10px 0;
         }
     </style>
 </head>
@@ -88,17 +127,26 @@ if($_POST){
                     <p class="sub-text">Te ayudamos a encontrar el acompañamiento que necesitas</p>
                 </td>
             </tr>
+            
+            <!-- Mostrar errores -->
+            <?php if(isset($error) && $error != '<label></label>'): ?>
             <tr>
-                <form action="" method="POST" >
+                <td colspan="2" class="error-message">
+                    <?php echo str_replace(['<label style="color:red;">','</label>'], '', $error); ?>
+                </td>
+            </tr>
+            <?php endif; ?>
+            
+            <tr>
+                <form action="" method="POST">
                 <td class="label-td" colspan="2">
-                    <label for="newemail" class="form-label">Gmail: </label>
+                    <label for="newemail" class="form-label">Email: </label>
                 </td>
             </tr>
             <tr>
                 <td class="label-td" colspan="2">
-                    <input type="email" name="newemail" class="input-text" placeholder="Correo Electronico" required>
+                    <input type="email" name="newemail" class="input-text" placeholder="Correo Electrónico" required>
                 </td>
-                
             </tr>
             <tr>
                 <td class="label-td" colspan="2">
@@ -107,7 +155,7 @@ if($_POST){
             </tr>
             <tr>
                 <td class="label-td" colspan="2">
-                    <input type="tel" name="tele" class="input-text"  placeholder="ej: 9531284327" pattern="[0-9]{10}" >
+                    <input type="tel" name="tele" class="input-text" placeholder="ej: 9531284327" pattern="[0-9]{10}" required>
                 </td>
             </tr>
             <tr>
@@ -127,41 +175,28 @@ if($_POST){
             </tr>
             <tr>
                 <td class="label-td" colspan="2">
-                    <input type="password" name="cpassword" class="input-text" placeholder="Ingresa la contraseña que creaste" required>
+                    <input type="password" name="cpassword" class="input-text" placeholder="Confirma tu contraseña" required>
                 </td>
             </tr>
-     
-            <tr>
-                
-                <td colspan="2">
-                    <?php echo $error ?>
-
-                </td>
-            </tr>
-            
             <tr>
                 <td>
-                    <input type="reset" value="Limpiar" class="login-btn btn-primary-soft btn" >
+                    <input type="reset" value="Limpiar" class="login-btn btn-primary-soft btn">
                 </td>
                 <td>
-                    <input type="submit" value="Ingresar" class="login-btn btn-primary btn">
+                    <input type="submit" value="Crear Cuenta" class="login-btn btn-primary btn">
                 </td>
-
             </tr>
             <tr>
                 <td colspan="2">
                     <br>
-                    <label for="" class="sub-text" style="font-weight: 280;">¿Ya tienes una cuenta&#63; </label>
+                    <label for="" class="sub-text" style="font-weight: 280;">¿Ya tienes una cuenta? </label>
                     <a href="login.php" class="hover-link1 non-style-link"> Acceso</a>
                     <br><br><br>
                 </td>
             </tr>
-
-                    </form>
-            </tr>
+            </form>
         </table>
-
     </div>
-</center>
+    </center>
 </body>
 </html>
