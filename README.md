@@ -5,7 +5,6 @@
 ![Hero — AbrazaMente](./capturas/Portada.png)
 
 **Sistema web para gestionar citas y sesiones en un consultorio psicológico**  
-*Desarrollado por Equipo 7 — Sección 5CM51*
 
 [![PHP](https://img.shields.io/badge/PHP-7.4%2B-purple)](https://www.php.net/) [![Docker](https://img.shields.io/badge/Docker-Enabled-blue)](https://www.docker.com/) [![MariaDB](https://img.shields.io/badge/DB-MariaDB-orange)](https://mariadb.org/) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 
@@ -71,7 +70,3 @@ cd AbrazaMente
 # 2) Levantar contenedores (reconstruir)
 docker compose up -d --build
 
-# Accesos típicos
-# App:       http://localhost:8080
-# phpMyAdmin: http://localhost:8081
-# MariaDB:   puerto 3306 (interno)
